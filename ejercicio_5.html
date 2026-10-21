@@ -1,0 +1,47 @@
+<!-- 
+ Usa fetch() para consultar https://jsonplaceholder.typicode.com/users y
+  mostrar los nombres en una lista HTML.
+   Maneja errores de red y muestra un mensaje de carga mientras se obtiene la respuesta.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 5</title>
+</head>
+<body>
+
+  <h2>Lista de usuarios</h2>
+
+  <p id="mensaje">Cargando...</p>
+
+  <ul id="listaUsuarios"></ul>
+
+  <script>
+
+    async function cargarUsuarios() {
+      try {
+
+        var respuesta = await fetch("https://jsonplaceholder.typicode.com/users");
+        var usuarios  = await respuesta.json();
+
+        document.getElementById("mensaje").textContent = "";
+
+        usuarios.forEach(function(usuario) {
+          var item = document.createElement("li");
+          item.textContent = usuario.name;
+          document.getElementById("listaUsuarios").appendChild(item);
+        });
+
+      } catch (error) {
+        document.getElementById("mensaje").textContent = "Hubo un error: " + error.message;
+      }
+    }
+
+    cargarUsuarios();
+
+  </script>
+
+</body>
+</html>

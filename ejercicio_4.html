@@ -1,0 +1,42 @@
+<!-- 
+ Con HTML que incluya un input, un botón y una lista vacía,
+ programa que al hacer clic se agregue el texto del input como un elemento <li>.
+   No agregues elementos si el texto está vacío y limpia el input después de insertar.
+ 
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4</title>
+</head>
+<body>
+
+  <input type="text" id="miInput" placeholder="Escribe algo..." />
+  <button onclick="agregarElemento()">Agregar</button>
+
+  <ul id="miLista"></ul>
+
+  <script>
+
+    function agregarElemento() {
+
+      var texto = document.getElementById("miInput").value;
+
+      if (texto === "") {
+        return;
+      }
+
+      var nuevoElemento = document.createElement('li');
+    nuevoElemento.textContent = texto;
+    lista.appendChild(nuevoElemento);
+  
+    input.value = '';
+
+  </script>
+
+</body>
+</html>
